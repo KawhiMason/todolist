@@ -147,7 +147,6 @@
 		obj_list.date = this.date.value;
 
 		list.push(obj_list); //添加到数组末尾
-
 		this.saveDate(list);
 
 		load(content);
@@ -175,17 +174,25 @@
 	}
 
 	btnClick.prototype.remove = function(i){
-		list.splice(i,1);
-
+	list.splice(i,1);
 		this.saveDate(list);
 
 		load(content);	
 	}
 
 	btnClick.prototype.doneEvnet = function(i){
+		var todo = list[i].todo;
+		var data = list[i].data;
 		list[i].done = "success";
+		var done = list[i].done;
+		var obj_list = {
+			todo: todo,
+			date: data,
+			done: done
+		};
+		list.splice(i,1);
+		list.push(obj_list)
 		this.saveDate(list);
-
 		load(content);
 
 	}
